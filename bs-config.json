@@ -1,5 +1,5 @@
 {
-  "port": 8000,
+  "port": process.env.PORT,
   "files": ["./app/**/*.{html,htm,css,js}"],
   "server": { "baseDir": "./app" }
 }
