@@ -19,7 +19,8 @@
 </head>
 
 
-<body ng-controller="firstCtrl">
+<body ng-controller="movieCatalogController">
+
   <nav class="navbar navbar-inverse bg-dark">
     <a class="navbar-brand" href="#">
       Catalogo de filmes
@@ -28,12 +29,9 @@
 
   <section>
     <input ng-model="search" type="text" placeholder="Search...">
-
     <!--  CAROSEEEEEL-->
 
     <!--  FIM DO CAROSEEEEEL-->
-
-
     <div class="container">
       <div class="card-deck">
         <div ng-repeat="catalogado in movies.catalogo | filter: search" class="mb-2">
@@ -86,13 +84,38 @@
                 <span class="fa fa-star "></span>
                 <span class="fa fa-star "></span>
               </div>
+              <button class="btn btn-primary" data-toggle="modal" data-target=#{{catalogado.id}} ng-click="movieCatalogController.trocaFilme(movie)">Mais informações</button>
+            </div>
+          </div>
+          <div class="modal" id={{catalogado.id}}>
+
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <!-- <h2>{{catalogado.titulo}}</h2> -->
+                  <h2>{{catalogado.id}}</h2>
+                </div>
+                <div class="modal-body">
+                  <div class="row">
+                    <div class="col-xs-8 col-xs-offset-2">
+                      {{catalogado.descricao}}
+                      <br>
+                      {{catalogado.url}}
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
       </div>
-    </div>
 
-  </section>
+    </div>
+  </div>
+
+</section>
 
 </body>
 </html>
