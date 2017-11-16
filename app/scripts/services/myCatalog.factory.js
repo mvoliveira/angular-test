@@ -2,17 +2,17 @@ angular.module("movieCatalog")
 .factory("myCatalog", function($q, $http){
 	return {
 		showMovies: function() {
-			var promessa = $q.defer();
+			var promise = $q.defer();
 			$http.get("http://private-74b50-provaangularjs.apiary-mock.com/movies").then(
-				function(result){
+				function(apiResult){
 					var movies = []
-					angular.forEach(result, function(movie){
-						movies = result.data
+					angular.forEach(apiResult, function(movie){
+						movies = apiResult.data
 					});
-					promessa.resolve(movies);
+					promise.resolve(movies);
 				}
 			);
-			return promessa.promise;
+			return promise.promise;
 		},
 	};
 });

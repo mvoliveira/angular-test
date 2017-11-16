@@ -6,8 +6,5 @@ angular.module('movieCatalog')
       $scope.movies = movies
     })
   }
-
   loadMovies();
-  //
-  //
 });
