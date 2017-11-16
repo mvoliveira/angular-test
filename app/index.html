@@ -1,0 +1,99 @@
+<style>
+.checked{
+  color: gold;
+}
+</style>
+<!DOCTYPE html>
+<html ng-app="movieCatalog">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="scripts/angular.min.js"></script>
+  <script src="scripts/app.js"></script>
+  <script src="scripts/movieCatalogController.js"></script>
+  <script src="scripts/myCatalog.factory.js"></script>
+  <!--  -->
+  <link data-require="bootstrap-css@*" data-semver="3.3.1" rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
+
+  <script data-require="ui-bootstrap@*" data-semver="0.13.0" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.0.min.js"></script>
+
+
+  <!--  -->
+  <title>Filmes que já assisti</title>
+</head>
+<body ng-controller="firstCtrl">
+
+  <h1>Header do Sistema</h1>
+  <hr></hr>
+  <section>
+    <input type="text" placeholder="Search..."/>
+    <div class="container">
+      <!--  CAROSEEEEEL-->
+
+      <!--  FIM DO CAROSEEEEEL-->
+      <div class="card-deck">
+
+        <div ng-repeat="catalogado in movies.catalogo" class="mb-2">
+          <div class="card" style="width: 20rem;">
+            <img class="card-img-top h-25 d-inline-block" src= {{catalogado.url}} alt="Card image cap">
+            <div class="card-block">
+              <h3 class="card-title">{{catalogado.titulo}}</h3>
+              <p class="card-text">{{catalogado.descricao}}</p>
+              <!--  FOR GOD REFACTOR that xxxx -->
+              <div ng-if = "catalogado.estrelas === 5">
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+              </div>
+
+              <div ng-if = "catalogado.estrelas === 4">
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star "></span>
+              </div>
+              <div ng-if = "catalogado.estrelas === 3">
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star "></span>
+                <span class="fa fa-star "></span>
+              </div>
+              <div ng-if = "catalogado.estrelas === 2">
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star "></span>
+                <span class="fa fa-star "></span>
+                <span class="fa fa-star "></span>
+              </div>
+              <div ng-if = "catalogado.estrelas === 1">
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star "></span>
+                <span class="fa fa-star "></span>
+                <span class="fa fa-star "></span>
+                <span class="fa fa-star "></span>
+              </div>
+              <div ng-if = "catalogado.estrelas === 0">
+                <span class="fa fa-star "></span>
+                <span class="fa fa-star "></span>
+                <span class="fa fa-star "></span>
+                <span class="fa fa-star "></span>
+                <span class="fa fa-star "></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+</body>
+</html>
