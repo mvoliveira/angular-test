@@ -14,6 +14,7 @@
   <script src="scripts/app.js"></script>
   <script src="scripts/movieCatalogController.js"></script>
   <script src="scripts/myCatalog.factory.js"></script>
+  <link rel="stylesheet" href="../public/css/other.css">
   <title>Filmes que já assisti</title>
 
 </head>
@@ -28,87 +29,91 @@
   </nav>
 
   <section>
-    <input ng-model="search" type="text" placeholder="Search...">
-    <!--  CAROSEEEEEL-->
 
-    <!--  FIM DO CAROSEEEEEL-->
-    <div class="container">
-      <div class="card-deck">
-        <div ng-repeat="catalogado in movies.catalogo | filter: search" class="mb-2">
-          <div class="card" style="width: 20rem;">
-            <img class="card-img-top h-25 d-inline-block" src= {{catalogado.url}} alt="Card image cap">
-            <div class="card-block">
-              <h3 class="card-title">{{catalogado.titulo}}</h3>
-              <p class="card-text">{{catalogado.descricao}}</p>
-              <!--  FOR GOD REFACTOR that xxxx -->
-              <div ng-if = "catalogado.estrelas === 5">
-                <span class="text-warning fa fa-star"></span>
-                <span class="text-warning fa fa-star"></span>
-                <span class="text-warning fa fa-star"></span>
-                <span class="text-warning fa fa-star"></span>
-                <span class="text-warning fa fa-star"></span>
-              </div>
+    <!-- <div class="input-group"> -->
+      <span class="input-group-btn justify-content-end">
+      <input ng-model="search" type="text" placeholder="Search..." class="form-control w-25 mt-2 mr-2 d-flex">
+      </span>
+  </div>
 
-              <div ng-if = "catalogado.estrelas === 4">
-                <span class="text-warning fa fa-star"></span>
-                <span class="text-warning fa fa-star"></span>
-                <span class="text-warning fa fa-star"></span>
-                <span class="text-warning fa fa-star"></span>
-                <span class="fa fa-star "></span>
-              </div>
-              <div ng-if = "catalogado.estrelas === 3">
-                <span class="text-warning fa fa-star"></span>
-                <span class="text-warning fa fa-star"></span>
-                <span class="text-warning fa fa-star"></span>
-                <span class="fa fa-star "></span>
-                <span class="fa fa-star "></span>
-              </div>
-              <div ng-if = "catalogado.estrelas === 2">
-                <span class="text-warning fa fa-star"></span>
-                <span class="text-warning fa fa-star"></span>
-                <span class="fa fa-star "></span>
-                <span class="fa fa-star "></span>
-                <span class="fa fa-star "></span>
-              </div>
-              <div ng-if = "catalogado.estrelas === 1">
-                <span class="text-warning fa fa-star"></span>
-                <span class="fa fa-star "></span>
-                <span class="fa fa-star "></span>
-                <span class="fa fa-star "></span>
-                <span class="fa fa-star "></span>
-              </div>
-              <div ng-if = "catalogado.estrelas === 0">
-                <span class="fa fa-star "></span>
-                <span class="fa fa-star "></span>
-                <span class="fa fa-star "></span>
-                <span class="fa fa-star "></span>
-                <span class="fa fa-star "></span>
-              </div>
-              <button class="btn btn-primary" data-toggle="modal" data-target=#{{catalogado.id}} ng-click="movieCatalogController.trocaFilme(movie)">Mais informações</button>
+  <!--  FIM DO CAROSEEEEEL-->
+  <div class="container">
+    <div class="card-deck mt-2">
+      <div ng-repeat="catalogado in movies.catalogo | filter: search" class="mb-2">
+        <div  class="card c-pointer"data-toggle="modal" data-target=#{{catalogado.id}} ng-click="movieCatalogController.trocaFilme(movie)" style="width: 20rem;">
+          <img class="card-img-top h-25 d-inline-block" src= {{catalogado.url}} alt="Card image cap">
+          <div class="card-block">
+            <h3 class="card-title">{{catalogado.titulo}}</h3>
+            <p class="card-text">{{catalogado.descricao}}</p>
+            <!--  FOR GOD REFACTOR that xxxx -->
+            <div ng-if = "catalogado.estrelas === 5">
+              <span class="text-warning fa fa-star"></span>
+              <span class="text-warning fa fa-star"></span>
+              <span class="text-warning fa fa-star"></span>
+              <span class="text-warning fa fa-star"></span>
+              <span class="text-warning fa fa-star"></span>
             </div>
-          </div>
-          <div class="modal" id={{catalogado.id}}>
 
-            <div class="modal-dialog">
+            <div ng-if = "catalogado.estrelas === 4">
+              <span class="text-warning fa fa-star"></span>
+              <span class="text-warning fa fa-star"></span>
+              <span class="text-warning fa fa-star"></span>
+              <span class="text-warning fa fa-star"></span>
+              <span class="fa fa-star "></span>
+            </div>
+            <div ng-if = "catalogado.estrelas === 3">
+              <span class="text-warning fa fa-star"></span>
+              <span class="text-warning fa fa-star"></span>
+              <span class="text-warning fa fa-star"></span>
+              <span class="fa fa-star "></span>
+              <span class="fa fa-star "></span>
+            </div>
+            <div ng-if = "catalogado.estrelas === 2">
+              <span class="text-warning fa fa-star"></span>
+              <span class="text-warning fa fa-star"></span>
+              <span class="fa fa-star "></span>
+              <span class="fa fa-star "></span>
+              <span class="fa fa-star "></span>
+            </div>
+            <div ng-if = "catalogado.estrelas === 1">
+              <span class="text-warning fa fa-star"></span>
+              <span class="fa fa-star "></span>
+              <span class="fa fa-star "></span>
+              <span class="fa fa-star "></span>
+              <span class="fa fa-star "></span>
+            </div>
+            <div ng-if = "catalogado.estrelas === 0">
+              <span class="fa fa-star "></span>
+              <span class="fa fa-star "></span>
+              <span class="fa fa-star "></span>
+              <span class="fa fa-star "></span>
+              <span class="fa fa-star "></span>
+            </div>
+            <!-- <button class="btn btn-primary" data-toggle="modal" data-target=#{{catalogado.id}} ng-click="movieCatalogController.trocaFilme(movie)">Mais informações</button> -->
+          </div>
+
+          <!-- Modal -->
+          <div class="modal fade" id={{catalogado.id}} tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <!-- <h2>{{catalogado.titulo}}</h2> -->
-                  <h2>{{catalogado.id}}</h2>
+                  <h5 class="modal-title" id="exampleModalLabel">{{catalogado.titulo}}</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
                 </div>
                 <div class="modal-body">
-                  <div class="row">
-                    <div class="col-xs-8 col-xs-offset-2">
-                      {{catalogado.descricao}}
-                      <br>
-                      {{catalogado.url}}
-                    </div>
-                  </div>
-
+                  <span>Descrição: {{catalogado.descricao}}</span>
+                  <br>
+                  <span>URL: {{catalogado.url}}</span>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
               </div>
-
             </div>
           </div>
+          <!--  novas moda sl-->
         </div>
       </div>
 

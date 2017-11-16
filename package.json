@@ -4,5 +4,8 @@
   },
   "devDependencies": {
     "lite-server": "^2.2.0"
+  },
+  "dependencies": {
+    "angular-ui-carousel": "^0.1.10"
   }
 }
