@@ -1,7 +1,5 @@
 <style>
-.checked{
-  color: gold;
-}
+
 </style>
 <!DOCTYPE html>
 <html ng-app="movieCatalog">
@@ -16,28 +14,29 @@
   <script src="scripts/app.js"></script>
   <script src="scripts/movieCatalogController.js"></script>
   <script src="scripts/myCatalog.factory.js"></script>
-  <!--  -->
-  <link data-require="bootstrap-css@*" data-semver="3.3.1" rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
-
-  <script data-require="ui-bootstrap@*" data-semver="0.13.0" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.0.min.js"></script>
-
-
-  <!--  -->
   <title>Filmes que já assisti</title>
+
 </head>
+
+
 <body ng-controller="firstCtrl">
+  <nav class="navbar navbar-inverse bg-dark">
+    <a class="navbar-brand" href="#">
+      Catalogo de filmes
+    </a>
+  </nav>
 
-  <h1>Header do Sistema</h1>
-  <hr></hr>
   <section>
-    <input type="text" placeholder="Search..."/>
+    <input ng-model="search" type="text" placeholder="Search...">
+
+    <!--  CAROSEEEEEL-->
+
+    <!--  FIM DO CAROSEEEEEL-->
+
+
     <div class="container">
-      <!--  CAROSEEEEEL-->
-
-      <!--  FIM DO CAROSEEEEEL-->
       <div class="card-deck">
-
-        <div ng-repeat="catalogado in movies.catalogo" class="mb-2">
+        <div ng-repeat="catalogado in movies.catalogo | filter: search" class="mb-2">
           <div class="card" style="width: 20rem;">
             <img class="card-img-top h-25 d-inline-block" src= {{catalogado.url}} alt="Card image cap">
             <div class="card-block">
@@ -45,36 +44,36 @@
               <p class="card-text">{{catalogado.descricao}}</p>
               <!--  FOR GOD REFACTOR that xxxx -->
               <div ng-if = "catalogado.estrelas === 5">
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
+                <span class="text-warning fa fa-star"></span>
+                <span class="text-warning fa fa-star"></span>
+                <span class="text-warning fa fa-star"></span>
+                <span class="text-warning fa fa-star"></span>
+                <span class="text-warning fa fa-star"></span>
               </div>
 
               <div ng-if = "catalogado.estrelas === 4">
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
+                <span class="text-warning fa fa-star"></span>
+                <span class="text-warning fa fa-star"></span>
+                <span class="text-warning fa fa-star"></span>
+                <span class="text-warning fa fa-star"></span>
                 <span class="fa fa-star "></span>
               </div>
               <div ng-if = "catalogado.estrelas === 3">
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
+                <span class="text-warning fa fa-star"></span>
+                <span class="text-warning fa fa-star"></span>
+                <span class="text-warning fa fa-star"></span>
                 <span class="fa fa-star "></span>
                 <span class="fa fa-star "></span>
               </div>
               <div ng-if = "catalogado.estrelas === 2">
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
+                <span class="text-warning fa fa-star"></span>
+                <span class="text-warning fa fa-star"></span>
                 <span class="fa fa-star "></span>
                 <span class="fa fa-star "></span>
                 <span class="fa fa-star "></span>
               </div>
               <div ng-if = "catalogado.estrelas === 1">
-                <span class="fa fa-star checked"></span>
+                <span class="text-warning fa fa-star"></span>
                 <span class="fa fa-star "></span>
                 <span class="fa fa-star "></span>
                 <span class="fa fa-star "></span>
